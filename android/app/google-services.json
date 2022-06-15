@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "230298685826-7t6eg8kl75kqnvhmq6ejh3b4obukteg1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vacation_app",
+            "certificate_hash": "b97e89a2ec81475a05c51923bec3524c75a604a6"
+          }
+        },
+        {
           "client_id": "230298685826-q4o90ivg03tbj0u5j5dfmfdgopj65knt.apps.googleusercontent.com",
           "client_type": 3
         }
