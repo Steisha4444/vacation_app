@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:vacation_app/controllers/login_controller.dart';
+import 'package:vacation_app/screens/home_screen.dart';
 import 'package:vacation_app/screens/test_screen.dart';
 import 'package:vacation_app/widgets/banner.dart' as banner;
 import 'package:vacation_app/widgets/form.dart';
+import 'package:vacation_app/widgets/form_request.dart';
 
 class LoginScreen extends StatelessWidget {
   final controller = Get.put(LoginController());
@@ -13,28 +15,11 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: Obx(() {
-      if (controller.googleAccount.value == null)
+      if (controller.googleAccount.value == null) {
         return googleSignInButton();
-      else
-        return Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color.fromARGB(255, 218, 200, 247),
-                Color.fromARGB(255, 172, 159, 214),
-              ],
-            ),
-          ),
-          child: Column(
-            children: [
-              banner.Banner(vacationDays: 4),
-              FormRequest(),
-            ],
-          ),
-        );
+      } else {
+        return HomeScreen();
+      }
     }));
   }
 

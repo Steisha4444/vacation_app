@@ -34,12 +34,15 @@ class _FormRequestState extends State<FormRequest> {
   Widget build(BuildContext context) {
     VacationType? myVacation = VacationType.vacation;
     return Container(
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30), topRight: Radius.circular(30)),
           color: Colors.white),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(
             height: 20,
@@ -48,28 +51,26 @@ class _FormRequestState extends State<FormRequest> {
           const SizedBox(
             height: 20,
           ),
-          SizedBox(
+          Container(
             width: 300,
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  border: Border.all(
-                      color: const Color.fromARGB(255, 72, 22, 148))),
-              child: DropdownButtonFormField<VacationType>(
-                value: myVacation,
-                onChanged: (VacationType? newValue) {
-                  myVacation = newValue;
-                },
-                items: VacationType.values.map((VacationType vacationType) {
-                  return DropdownMenuItem<VacationType>(
-                      value: vacationType,
-                      child: Text(
-                        vacationType.displayTitle,
-                        textAlign: TextAlign.left,
-                        style: const TextStyle(color: Colors.black),
-                      ));
-                }).toList(),
-              ),
+            padding: EdgeInsets.only(left: 10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                border: Border.all(color: Color.fromARGB(255, 0, 0, 0))),
+            child: DropdownButtonFormField<VacationType>(
+              value: myVacation,
+              onChanged: (VacationType? newValue) {
+                myVacation = newValue;
+              },
+              items: VacationType.values.map((VacationType vacationType) {
+                return DropdownMenuItem<VacationType>(
+                    value: vacationType,
+                    child: Text(
+                      vacationType.displayTitle,
+                      textAlign: TextAlign.left,
+                      style: const TextStyle(color: Colors.black),
+                    ));
+              }).toList(),
             ),
           ),
           const SizedBox(
@@ -84,8 +85,7 @@ class _FormRequestState extends State<FormRequest> {
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
-                  border: Border.all(
-                      color: const Color.fromARGB(255, 72, 22, 148))),
+                  border: Border.all(color: Color.fromARGB(255, 0, 0, 0))),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: TextButton(
@@ -115,30 +115,26 @@ class _FormRequestState extends State<FormRequest> {
           const SizedBox(
             height: 20,
           ),
-          Center(
-            child: SizedBox(
-              width: 300,
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
-                    border: Border.all(
-                        color: const Color.fromARGB(255, 72, 22, 148))),
-                child: DropdownButtonFormField<VacationType>(
-                  value: myVacation,
-                  onChanged: (VacationType? newValue) {
-                    myVacation = newValue;
-                  },
-                  items: VacationType.values.map((VacationType vacationType) {
-                    return DropdownMenuItem<VacationType>(
-                        value: vacationType,
-                        child: Text(
-                          vacationType.displayTitle,
-                          textAlign: TextAlign.left,
-                          style: const TextStyle(color: Colors.black),
-                        ));
-                  }).toList(),
-                ),
-              ),
+          Container(
+            width: 300,
+            padding: EdgeInsets.only(left: 10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                border: Border.all(color: Color.fromARGB(255, 0, 0, 0))),
+            child: DropdownButtonFormField<VacationType>(
+              value: myVacation,
+              onChanged: (VacationType? newValue) {
+                myVacation = newValue;
+              },
+              items: VacationType.values.map((VacationType vacationType) {
+                return DropdownMenuItem<VacationType>(
+                    value: vacationType,
+                    child: Text(
+                      vacationType.displayTitle,
+                      textAlign: TextAlign.left,
+                      style: const TextStyle(color: Colors.black),
+                    ));
+              }).toList(),
             ),
           ),
           const SizedBox(
@@ -156,8 +152,7 @@ class _FormRequestState extends State<FormRequest> {
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
-                  border: Border.all(
-                      color: const Color.fromARGB(255, 72, 22, 148))),
+                  border: Border.all(color: Color.fromARGB(255, 0, 0, 0))),
               child: TextFormField(
                 minLines: 1,
                 maxLines: 3,
@@ -167,18 +162,20 @@ class _FormRequestState extends State<FormRequest> {
           const SizedBox(
             height: 30,
           ),
-          SizedBox(
-            width: 150,
-            child: TextButton(
-              onPressed: () {},
-              child: Text(
-                'Подати запит',
-                style:
-                    const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+          Center(
+            child: SizedBox(
+              width: 150,
+              child: TextButton(
+                onPressed: () {},
+                child: Text(
+                  'Подати запит',
+                  style:
+                      const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                ),
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        Color.fromARGB(255, 58, 23, 129))),
               ),
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(
-                      Color.fromARGB(255, 58, 23, 129))),
             ),
           ),
           const SizedBox(

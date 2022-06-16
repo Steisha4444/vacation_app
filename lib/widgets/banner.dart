@@ -10,12 +10,12 @@ class Banner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 10),
+        padding: const EdgeInsets.only(left: 20, right: 10, top: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 20,
+              height: 15,
             ),
             Text(
               'Запит на відпустку',
@@ -25,7 +25,7 @@ class Banner extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
             SizedBox(
-              height: 20,
+              height: 15,
             ),
             Text('на даний момент у тебе накопичено',
                 style: TextStyle(
@@ -33,7 +33,7 @@ class Banner extends StatelessWidget {
                   fontSize: 16,
                 )),
             SizedBox(
-              height: 20,
+              height: 15,
             ),
             Row(
               textBaseline: TextBaseline.alphabetic,
