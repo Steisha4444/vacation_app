@@ -3,15 +3,20 @@ import 'package:get/get.dart';
 import 'package:vacation_app/controllers/request_controller.dart';
 import 'package:vacation_app/models/user.dart';
 import 'package:vacation_app/models/vacationType.dart';
+import 'package:vacation_app/widgets/label.dart';
 
 class RequestForm extends GetView<RequestController> {
+  String _formatDate(DateTime? date) {
+    return '${date?.day}/${date?.month}/${date?.year}';
+  }
+
   final controller = Get.put(RequestController());
   @override
   Widget build(BuildContext context) {
     return GetBuilder<RequestController>(
       builder: (_) => Container(
         width: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 25),
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30), topRight: Radius.circular(30)),
@@ -24,16 +29,16 @@ class RequestForm extends GetView<RequestController> {
             const SizedBox(
               height: 20,
             ),
-            const Text('Тип відпустки'),
+            const Label('Тип відпустки'),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             Container(
-              padding: const EdgeInsets.only(left: 10),
+              padding: const EdgeInsets.only(left: 15),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
                 border: Border.all(
-                  color: Color.fromARGB(255, 0, 0, 0),
+                  color: Color.fromARGB(255, 82, 79, 79),
                 ),
               ),
               child: DropdownButtonFormField<VacationType>(
@@ -53,9 +58,9 @@ class RequestForm extends GetView<RequestController> {
             const SizedBox(
               height: 20,
             ),
-            const Text('Бажана дата'),
+            const Label('Бажана дата'),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             SizedBox(
               child: Container(
@@ -69,7 +74,7 @@ class RequestForm extends GetView<RequestController> {
                       child: (controller.dateRange?.start != null &&
                               controller.dateRange?.end != null)
                           ? Text(
-                              '${controller.dateRange?.start.toString().split(' ')[0]} - ${controller.dateRange?.end.toString().split(' ')[0]}',
+                              '${_formatDate(controller.dateRange?.start)} - ${_formatDate(controller.dateRange?.end)}',
                               style: const TextStyle(color: Colors.black),
                             )
                           : const Text(
@@ -87,12 +92,12 @@ class RequestForm extends GetView<RequestController> {
             const SizedBox(
               height: 20,
             ),
-            const Text('Підтвердження від'),
+            const Label('Підтвердження від'),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             Container(
-              padding: const EdgeInsets.only(left: 10),
+              padding: const EdgeInsets.only(left: 15),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
                 border: Border.all(
@@ -116,12 +121,9 @@ class RequestForm extends GetView<RequestController> {
             const SizedBox(
               height: 20,
             ),
-            const Text(
-              'Коментар',
-              textAlign: TextAlign.left,
-            ),
+            const Label('Коментар'),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             SizedBox(
               child: Container(
@@ -131,7 +133,7 @@ class RequestForm extends GetView<RequestController> {
                 child: TextFormField(
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.symmetric(
-                      horizontal: 10,
+                      horizontal: 15,
                     ),
                   ),
                   controller: controller.commentController,

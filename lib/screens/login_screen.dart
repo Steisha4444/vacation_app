@@ -5,8 +5,7 @@ import 'package:vacation_app/controllers/login_controller.dart';
 import 'package:vacation_app/screens/home_screen.dart';
 import 'package:vacation_app/screens/test_screen.dart';
 import 'package:vacation_app/widgets/banner.dart' as banner;
-import 'package:vacation_app/widgets/form.dart';
-import 'package:vacation_app/widgets/form_request.dart';
+import 'package:vacation_app/widgets/request_form.dart';
 
 class LoginScreen extends StatelessWidget {
   final controller = Get.put(LoginController());
@@ -15,7 +14,9 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: Obx(() {
-      if (controller.googleAccount.value == null) {
+      if (controller.googleAccount.value?.email == null) {
+        print('laaaaaa');
+        print(controller.googleAccount.value?.email);
         return googleSignInButton();
       } else {
         return HomeScreen();
@@ -92,13 +93,6 @@ class LoginScreen extends StatelessWidget {
           Text(
             controller.googleAccount.value?.email ?? '',
             style: Get.textTheme.bodyText1,
-          ),
-          ActionChip(
-            label: Text('Logout'),
-            onPressed: () {
-              controller.logout();
-            },
-            avatar: Icon(Icons.logout),
           ),
         ],
       ),

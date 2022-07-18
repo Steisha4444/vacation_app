@@ -15,6 +15,7 @@ class RequestController extends GetxController {
   User? selectedUser;
   String? selectedUsersName;
   final commentController = TextEditingController();
+  final loginController = Get.find<LoginController>();
 
   @override
   void onInit() {
@@ -31,6 +32,13 @@ class RequestController extends GetxController {
   void onSelectUser(User? value) {
     selectedUser = value!;
     update();
+  }
+
+  Future<int> getVacationDays() async {
+    await _fetchData();
+    final user = users.firstWhere((element) =>
+        element.email == loginController.googleAccount.value!.email);
+    return user.vacationDays;
   }
 
   void onSelectDateRange(DateTimeRange value) {
@@ -58,7 +66,7 @@ class RequestController extends GetxController {
 
   Future<void> onSubmit() async {
     isLoading = true;
-    final loginController = Get.find<LoginController>(); 
+
     update();
     final request = VacationRequest(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
@@ -67,10 +75,13 @@ class RequestController extends GetxController {
       managerId: selectedUser!.email,
       comment: commentController.text,
       sentFromEmail: loginController.googleAccount.value!.email,
-      sentFromName: loginController.googleAccount.value!.displayName! ,
+      sentFromName: loginController.googleAccount.value!.displayName!,
     );
     await RequestApi.addRequest(request);
     isLoading = false;
+    dateRange = null;
+    commentController.text = '';
+    selectedUser = null;
     update();
   }
 

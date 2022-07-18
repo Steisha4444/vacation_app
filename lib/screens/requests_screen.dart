@@ -11,15 +11,39 @@ class RequestsScreen extends GetView<NotificationController> {
   Widget build(BuildContext context) {
     controller.fetchData();
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 218, 200, 247),
+      appBar: AppBar(
+        title: Align(
+          child: Text('Сповіщення'),
+          alignment: Alignment.topLeft,
+        ),
+        backgroundColor: Color.fromARGB(255, 218, 200, 247),
+        elevation: 0,
+      ),
       body: GetBuilder<NotificationController>(
         builder: (_) {
           final requests = [
             ...controller.toConfirmRequests,
             ...controller.myRequests
-          ];
-          return ListView.builder(
-            itemCount: requests.length,
-            itemBuilder: (context, idx) => RequestCard(request: requests[idx]),
+          ].reversed.toList();
+          return Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+            ),
+            child: ListView.builder(
+              itemCount: requests.length,
+              itemBuilder: (context, idx) => Column(
+                children: [
+                  RequestCard(
+                    request: requests[idx],
+                    rejectRequest: controller.onRejectRequest,
+                    confimRequest: controller.onConfirnRequest,
+                  ),
+                ],
+              ),
+            ),
           );
         },
       ),

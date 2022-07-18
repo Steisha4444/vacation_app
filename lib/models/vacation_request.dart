@@ -13,7 +13,7 @@ class VacationRequest {
   final String? comment;
   final String sentFromEmail;
   final String sentFromName;
-  final RequestStatus status;
+  RequestStatus status;
 
   VacationRequest({
     required this.id,

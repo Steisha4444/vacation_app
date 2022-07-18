@@ -7,6 +7,7 @@ import 'package:vacation_app/screens/requests_screen.dart';
 
 class HomeScreen extends GetView<HomeController> {
   final controller = Get.put(HomeController());
+  final loginController = Get.find<LoginController>();
 
   HomeScreen({Key? key}) : super(key: key);
 
@@ -15,7 +16,8 @@ class HomeScreen extends GetView<HomeController> {
       case 0:
         return RequestsScreen();
       case 2:
-        Get.find<LoginController>().logout();
+        loginController.logout();
+        controller.onNavigate(0);
         return Container();
       default:
         return RequestScreen();
@@ -28,22 +30,28 @@ class HomeScreen extends GetView<HomeController> {
       builder: (_) => Scaffold(
           body: getScreen(),
           bottomNavigationBar: BottomNavigationBar(
+            fixedColor: Colors.black,
             backgroundColor: Color.fromARGB(255, 218, 200, 247),
             onTap: controller.onNavigate,
             currentIndex: controller.page,
-            selectedIconTheme: IconThemeData(
-                size: 32, color: Color.fromARGB(255, 72, 22, 148)),
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            selectedIconTheme: const IconThemeData(
+              size: 32,
+              color: Color.fromARGB(255, 72, 22, 148),
+            ),
             items: const [
               BottomNavigationBarItem(
-                label: '',
+                label: 'Сповіщення',
                 icon: Icon(Icons.notifications_outlined),
               ),
               BottomNavigationBarItem(
-                label: '',
+                label: 'Подати запит',
                 icon: Icon(Icons.add_circle_outline),
               ),
+              // IconButton(icon:  Icon(Icons.logout), onPressed:  loginController.logout();,)
               BottomNavigationBarItem(
-                label: '',
+                label: 'Вийти',
                 icon: Icon(Icons.logout),
               ),
             ],

@@ -9,6 +9,13 @@ class RequestApi {
         .set(request.toJson());
   }
 
+  static Future<void> updateRequest(VacationRequest request) async {
+    await FirebaseFirestore.instance
+        .collection('requests')
+        .doc(request.id)
+        .update(request.toJson());
+  }
+
   static Future<List<VacationRequest>> getUserRequests(String user) async {
     final requests =
         await FirebaseFirestore.instance.collection('requests').get();
