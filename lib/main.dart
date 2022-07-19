@@ -5,6 +5,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:vacation_app/screens/login_screen.dart';
+import 'package:vacation_app/screens/request_screen.dart';
 
 import 'firebase_options.dart';
 
@@ -32,6 +33,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: LoginScreen());
+        home: RequestScreen());
   }
 }
