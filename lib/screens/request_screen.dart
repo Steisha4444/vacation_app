@@ -27,7 +27,7 @@ class RequestScreen extends GetView<LoginController> {
           child: Column(
             children: [
               banner.Banner(
-                vacationDays: controller.user?.vacationDays,
+               // vacationDays: controller.user?.vacationDays,
               ),
               Expanded(child: RequestForm()),
             ],

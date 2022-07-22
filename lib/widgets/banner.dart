@@ -6,11 +6,12 @@ import 'package:vacation_app/controllers/login_controller.dart';
 import 'package:vacation_app/controllers/request_controller.dart';
 
 class Banner extends StatelessWidget {
-  final vacationDays;
-  Banner({Key? key, required this.vacationDays}) : super(key: key);
+  final vacationDays =10;
+  Banner( {Key? key, }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    
     return Container(
       child: Padding(
         padding: const EdgeInsets.only(left: 20, right: 10, top: 30),
